@@ -13,6 +13,24 @@
 
 Тебе может понадобится модуль random, цикл while и ветвления
 """
-
-if __name__ == '__main__':
-    pass
+import random
+guessesTaken = 0
+print('Давай сыграем в игру "Угадай число"! Как тебя зовут?\n')
+myName = input()
+number = random.randint(1,1000000)
+print('Ну тогда приступим, '+myName+'? Я загадал число от одного до 1.000.000')
+guess = input(f"Попробуй угадать это число\n")
+while guess != "" and guess != "exit" and guess != number:
+    if guess.lstrip("-").isdigit():
+        if int(guess) < 0 or int(guess) > 1000000:
+            print(f"Число не входит в диапазон [{range_low}, {range_high}]\n")
+        else:
+            if int(guess) < number:
+                print("Число меньше загаданного\n")
+            elif int(guess) > number:
+                print("Число больше загаданного\n")
+            print('Не угадал')
+        guess = input("Попробуй ещё\n")
+    else:
+        print("Введенные данные не являются числом\n")
+        guess = input("Попробуй ещё\n")
